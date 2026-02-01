@@ -1,0 +1,132 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+*.pyd
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+wheelhouse/
+*.egg
+*.whl
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual environments
+.env
+.venv/
+env/
+venv/
+ENV/
+venv.bak/
+venv-*/
+
+# Pyenv
+.python-version
+
+# Poetry
+.cache/pypoetry/
+.poetry/
+
+# pipenv
+Pipfile.lock
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos.
+*.manifest
+*.spec
+
+# Unit test / coverage
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# Pyre / type checker caches
+.mypy_cache/
+.pytype/
+.pyre/
+.pyright/
+
+# Byte-compiled Cython files
+*.c
+*.cpp
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Editor temporary files
+*~
+.*.swp
+*.swp
+*.swo
+*.tmp
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# JetBrains IDEs
+/.idea/*
+!.idea/inspectionProfiles
+*.iml
+
+# Emacs
+*~
+.\#*
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# Misc
+coverage_html_report/
+profile_default/
+ipynb_checkpoints/
+.envrc
+.env.test
