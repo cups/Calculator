@@ -119,6 +119,6 @@ class Calculator:
         if isinstance(value, str):
             try:
                 return Decimal(value)
-            except InvalidOperation:
-                raise ValueError(f"Invalid numeric string: {value!r}")
+            except InvalidOperation as exc:
+                raise ValueError(f"Invalid numeric string: {value!r}") from exc
         raise TypeError(f"Unsupported value type: {type(value).__name__}")
