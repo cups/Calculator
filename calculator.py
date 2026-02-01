@@ -76,6 +76,37 @@ class Calculator:
         new_total = self._quantize(self._total / dec_div)
         return self._set_total_with_check(new_total)
 
+    def percent(self, value: Number) -> Decimal:
+        """Set total to (total * value / 100) and return new total.
+
+        Accepts the same input types as other operations; result is quantized and
+        checked against max_value. Undo (clear) will restore the previous total.
+        """
+        dec_value = self._to_decimal(value)
+        new_total = self._quantize(self._total * dec_value / Decimal("100"))
+        return self._set_total_with_check(new_total)
+
+    def percent_add(self, value: Number) -> Decimal:
+        """Add (total * value / 100) to the current total and return new total.
+
+        Accepts the same input types as other operations; result is quantized and
+        checked against max_value. Undo (clear) will restore the previous total.
+        """
+        dec_value = self._to_decimal(value)
+        increment = (self._total * dec_value) / Decimal("100")
+        new_total = self._quantize(self._total + increment)
+        return self._set_total_with_check(new_total)
+
+    def percent_substract(self, value: Number) -> Decimal:
+        """Subtract (total * value / 100) from the current total and return new total.
+
+        Accepts the same input types as other operations; result is quantized and
+        checked against max_value. Undo (clear) will restore the previous total.
+        """
+        dec_value = self._to_decimal(value)
+        decrement = (self._total * dec_value) / Decimal("100")
+        new_total = self._quantize(self._total - decrement)
+        return self._set_total_with_check(new_total)
     # Internal helpers (non-public) -------------------------------------
 
     def _apply_delta(self, delta: Decimal) -> Decimal:
