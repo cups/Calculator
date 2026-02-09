@@ -11,6 +11,9 @@ class Calculator:
       - subtract(value)
       - multiply(value)
       - divide(value)
+      - percent(value)
+      - percent_add(value)
+      - percent_subtract(value)
       - get_total()
       - clear()       # one-shot undo (restore previous total, then forget it)
       - clear_all()   # wipe everything

@@ -87,3 +87,45 @@ def test_clear_is_one_shot_undo_and_clear_all():
     # clear_all wipes everything
     calc.clear_all()
     assert calc.get_total() == Decimal("0.00")
+
+
+def test_clear_all_and_rebuild_with_varied_operations():
+    calc = Calculator(precision=2, max_value=1000)
+    # create a non-zero total using three different methods: add, multiply, subtract
+    calc.add(2)
+    calc.multiply(3)  # 6.00
+    calc.subtract(1)  # 5.00
+    assert calc.get_total() == Decimal("5.00")
+
+    # clear all and ensure total reset
+    calc.clear_all()
+    assert calc.get_total() == Decimal("0.00")
+    # double-check via another get_total() and then clear() should be a no-op
+    assert calc.get_total() == Decimal("0.00")
+    calc.clear()
+    assert calc.get_total() == Decimal("0.00")
+
+    # recreate a non-zero total using another three different methods: add (string), multiply, divide
+    calc.add("4")
+    calc.multiply(2)  # 8.00
+    calc.divide(4)    # 2.00
+    assert calc.get_total() == Decimal("2.00")
+
+
+def test_clear_undo_behavior_after_clear_all():
+    calc = Calculator(precision=2, max_value=1000)
+
+    # create non-zero total using a Decimal input (not previously used in these tests)
+    calc.add(Decimal("7.77"))
+    assert calc.get_total() == Decimal("7.77")
+
+    # clear() should undo the last entry and restore previous total (0.00)
+    calc.clear()
+    assert calc.get_total() == Decimal("0.00")
+
+    # after clear_all, clear() should do nothing (undo cleared); ensure no exception and total remains zero
+    calc.add(Decimal("1.23"))
+    calc.clear_all()
+    calc.clear()
+    assert calc.get_total() == Decimal("0.00")
+
